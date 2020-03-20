@@ -12,6 +12,7 @@ repositories {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     compile 'no.tornado:tornadofx:1.7.14'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
 }
 
 compileKotlin {

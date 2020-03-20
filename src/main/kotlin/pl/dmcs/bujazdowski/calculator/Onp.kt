@@ -1,6 +1,8 @@
 package pl.dmcs.bujazdowski.calculator
 
+import org.apache.commons.lang3.StringUtils
 import java.util.*
+import kotlin.math.pow
 
 object Onp {
 
@@ -52,6 +54,33 @@ object Onp {
         return result
     }
 
+    fun evaluate(onp: List<String>): Double {
+        val onpWithoutEquals = onp.filter { it != "=" }
+        if (onpWithoutEquals.size <= 2) return 0.0
+
+        val stack = Stack<Double>()
+
+        onpWithoutEquals.forEach { token ->
+            if (StringUtils.isNumeric(token)) {
+                stack.push(token.toDouble())
+            } else {
+                val op2 = stack.pop()
+                val op1 = stack.pop()
+                val result = when (token) {
+                    "+" -> op1 + op2
+                    "-" -> op1 - op2
+                    "*" -> op1 * op2
+                    "/" -> op1 / op2
+                    "^" -> op1.pow(op2)
+                    else -> throw IllegalStateException()
+                }
+                stack.push(result)
+            }
+        }
+
+        return stack.pop()
+    }
+
     private fun tokenize(input: String): List<String> {
         val tokens = mutableListOf<String>()
         val builder = StringBuilder()
@@ -68,6 +97,10 @@ object Onp {
 
         tokens.add(builder.toString())
         return tokens.filter { it.isNotEmpty() }
+    }
+
+    fun isOperand(x: String): Boolean {
+        return (operands - "=").contains(x)
     }
 
 

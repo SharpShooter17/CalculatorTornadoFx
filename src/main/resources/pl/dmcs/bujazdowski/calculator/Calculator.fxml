@@ -11,16 +11,15 @@
 
     <Label fx:id="display" id="display" />
     <HBox>
-        <Button text="C"/>
-        <Button text="+/-"/>
-        <Button text="\%"/>
+        <Button text="C" styleClass="zero"/>
+        <Button text="^"/>
         <Button text="/" styleClass="op"/>
     </HBox>
     <HBox>
         <Button text="7"/>
         <Button text="8"/>
         <Button text="9"/>
-        <Button text="X" styleClass="op"/>
+        <Button text="*" styleClass="op"/>
     </HBox>
     <HBox>
         <Button text="4"/>
@@ -36,6 +35,7 @@
     </HBox>
     <HBox>
         <Button text="0" styleClass="zero"/>
+        <Button text="." styleClass="op"/>
         <Button text="="/>
     </HBox>
 

@@ -27,7 +27,7 @@
 }
 
 .button.zero {
-    -fx-pref-width: 180;
+    -fx-pref-width: 120;
     -fx-alignment: center-left;
     -fx-padding: 0 25;
 }
